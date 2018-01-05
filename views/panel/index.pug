@@ -1,5 +1,20 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+  #wrapper
+    header#mainHeader
+      #rtHeader
+        #userName {{پویا مظفرمقام}}
+        #userWarnings
+          i.material-icons warning
+          span 0
+          span اخطار
+      #ltHeader
+        #timeCountCont.pmd-z-depth
+          i.material-icons event
+          span 13:00:00
+        button#endQuizBtn.btn.pmd-btn-raised.pmd-ripple-effect.btn-danger اتمام آزمون
+      #middleHeader
+        img(src="./images/ikiu_logo.png")
+
+      

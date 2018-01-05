@@ -1,130 +1,110 @@
-@import '../global/globalProperties.sass';
-
-.loadingBlur
-    filter: blur(5px)
-*   
-    font-family: $fontFamily
-// loading spinner
-/*loading spinner*/
-#mainLoading,#ajaxLoading 
-    width: 100%
-    height: 100%
-    z-index: 100
-    position: fixed
-    top: 0px
-    bottom: 0px
-    right: 0px
-    left: 0px
-#mainLoading
-    background-color: white
-#mainLoading>div,#ajaxLoading>div 
-    position: absolute
-    top: 0px
-    bottom: 0px
-    right: 0px
-    left: 0px
-    margin: auto
-    height: 50px
-
-#ajaxLoading 
-    background-color: rgba(255, 255, 255, 0.8)!important
-    display: none
-
-.spinner 
-    margin: 100px auto 0
-    width: 70px
-    text-align: center
-
-
-.spinner > div 
-    width: 18px
-    height: 18px
-    background-color: #333
-    border-radius: 100%
-    display: inline-block
-    -webkit-animation: sk-bouncedelay 1.4s infinite ease-in-out both
-    animation: sk-bouncedelay 1.4s infinite ease-in-out both
-
-
-.spinner .bounce1 
-    -webkit-animation-delay: -0.32s
-    animation-delay: -0.32s
-
-
-.spinner .bounce2 
-    -webkit-animation-delay: -0.16s
-    animation-delay: -0.16s
-@-webkit-keyframes sk-bouncedelay 
-    0%, 80%, 100% 
-         -webkit-transform: scale(0) 
-    40% 
-         -webkit-transform: scale(1.0) 
-
-
-@keyframes sk-bouncedelay 
-    0%, 80%, 100% 
-        -webkit-transform: scale(0)
-        transform: scale(0)
-    40% 
-        -webkit-transform: scale(1.0)
-        transform: scale(1.0)
-      
-
-// globals
-    
-.englishText
-    text-transform: lowercase!important
-    direction: ltr
-// for inputs
-.form-control
-    border-color: $thirdColor!important
-
-.pmd-textfield-focused
-    background-color: $secondaryColor!important
-        
-.validation-span
-    display: none
-
-// login begins
+@import "../global/_globalStyles.sass"
 
 #wrapper
     width: 100%
     height: 100%
+    display: table
     position: absolute
-    top: 0px    
-    left: 0px   
+    top: 0px
+    left: 0px
     right: 0px
     bottom: 0px
+    background-color: $lightBackColor
 
-    #loginBoxCont
-        @extend #wrapper
-        width: 400px
-        height: 270px
+header#mainHeader
+    width: 100%
+    height: 70px
+    background-color: $boldBackColor
+    padding-right: 15px
+    padding-left: 15px
+
+    #rtHeader
+        min-width: 300px
+        height: 70px
+        float: right
+        display: table
+
+        #userName
+            min-width: 150px
+            height: 70px
+            padding-top: 5px
+            padding-bottom: 5px
+            text-align: center
+            font-size: 26px
+            float: right
+            line-height: 60px
+            color: white
+        #userWarnings
+            min-width: 90px
+            height: 30px
+            background-color: $lightBackColor
+            float: right
+            border-radius: 10px
+            line-height: 30px
+            padding: 0px 5px 0px 5px
+            margin: 20px 10px 0px 0px
+
+            i
+                width: 20px
+                height: 30px
+                line-height: 30px
+                text-align: center
+                float: right
+                font-size: 20px
+                margin-left: 5px
+            span:nth-of-type(1)
+                width: 10px
+                height: 30px
+                display: table
+                font-weight: bold
+                float: right
+                padding: 0px 2px 0px 2px
+            span:nth-of-type(2)
+                height: 30px
+                line-height: 30px
+                float: right
+    #middleHeader
+        width: 70px
+        height: 70px
         margin: auto
-        padding: 10px
-
-        
-
-        #loginBox
-            position: relative
+        display: block
+        padding: 5px 0px 5px 0px
+        img
             width: 100%
             height: 100%
-
-            h1
-                text-align: center
-                font-family: $sFontFamily
-                color: $secondaryColor
-
-            .loginArrow
-                width: 140px
-                height: 300px
-                font-size: 200px
-                position: absolute
-                top: 0px
-                line-height: 300px
-            .ltLoginArrow
-                right: -140px
-            .rtLoginArrow
-                left: -140px
+    #ltHeader
+        width: 300px
+        height: 70px
+        float: left
         
+        #timeCountCont
+            width: 150px
+            height: 35px
+            border-radius: 20px
+            margin-top: 17.5px
+            line-height: 35px
+            font-size: 20px
+            padding: 0px 5px 0px 5px
+            float: right
+            background-color: $lightBackColor
+            i
+                width: 35px
+                height: 35px
+                line-height: 35px
+                text-align: center
+                color: white
+                float: right
+                border-left: 1px dashed white
+            span
+                height: 35px
+                width: calc(100% - 35px)
+                line-height: 35px
+                display: block
+                float: right
+                color: white
+                text-align: center
+                font-size: 18px
+                font-family: yekan
+        #endQuizBtn
+            margin: 17.5px 10px 0px 0px
         

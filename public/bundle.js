@@ -202,7 +202,7 @@ var singleton = null;
 var	singletonCounter = 0;
 var	stylesInsertedAtTop = [];
 
-var	fixUrls = __webpack_require__(8);
+var	fixUrls = __webpack_require__(9);
 
 module.exports = function(list, options) {
 	if (typeof DEBUG !== "undefined" && DEBUG) {
@@ -215,7 +215,7 @@ module.exports = function(list, options) {
 
 	// Force single-tag solution on IE6-9, which has a hard limit on the # of <style>
 	// tags it will allow on a page
-	if (!options.singleton) options.singleton = isOldIE();
+	if (!options.singleton && typeof options.singleton !== "boolean") options.singleton = isOldIE();
 
 	// By default, add <style> tags to the <head> element
 	if (!options.insertInto) options.insertInto = "head";
@@ -530,21 +530,23 @@ __webpack_require__(4);
 
 __webpack_require__(5);
 
-__webpack_require__(21);
-
 __webpack_require__(6);
 
-__webpack_require__(9);
+__webpack_require__(7);
 
-__webpack_require__(11);
+__webpack_require__(10);
 
-__webpack_require__(13);
+__webpack_require__(12);
 
-__webpack_require__(15);
+__webpack_require__(14);
 
-__webpack_require__(17);
+__webpack_require__(16);
 
-__webpack_require__(19);
+__webpack_require__(18);
+
+__webpack_require__(20);
+
+__webpack_require__(22);
 
 /***/ }),
 /* 3 */
@@ -2208,10 +2210,34 @@ $(window).resize(function () {
 /* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
+"use strict";
+
+
+//hide loading on page finish loading
+$(window).on("load", function () {
+    $("#mainLoading").slideUp(500);
+});
+
+// ajax loading hide/show functions
+
+window.showLoading = function () {
+    $("#ajaxLoading").fadeIn(500);
+    $("#wrapper").addClass("loadingBlur");
+};
+
+window.hideLoading = function () {
+    $("#ajaxLoading").fadeOut(500);
+    $("#wrapper").removeClass("loadingBlur");
+};
+
+/***/ }),
+/* 7 */
+/***/ (function(module, exports, __webpack_require__) {
+
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(7);
+var content = __webpack_require__(8);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -2236,7 +2262,7 @@ if(false) {
 }
 
 /***/ }),
-/* 7 */
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(0)(undefined);
@@ -2250,7 +2276,7 @@ exports.push([module.i, "@font-face{\r\n    src: url('../../fonts/B Homa_0.ttf')
 
 
 /***/ }),
-/* 8 */
+/* 9 */
 /***/ (function(module, exports) {
 
 
@@ -2345,13 +2371,13 @@ module.exports = function (css) {
 
 
 /***/ }),
-/* 9 */
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(10);
+var content = __webpack_require__(11);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -2376,7 +2402,7 @@ if(false) {
 }
 
 /***/ }),
-/* 10 */
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(0)(undefined);
@@ -2384,19 +2410,64 @@ exports = module.exports = __webpack_require__(0)(undefined);
 
 
 // module
-exports.push([module.i, ".loadingBlur {\n  filter: blur(5px); }\n\n* {\n  font-family: isans; }\n\n/*loading spinner*/\n#mainLoading, #ajaxLoading {\n  width: 100%;\n  height: 100%;\n  z-index: 100;\n  position: fixed;\n  top: 0px;\n  bottom: 0px;\n  right: 0px;\n  left: 0px; }\n\n#mainLoading {\n  background-color: white; }\n\n#mainLoading > div, #ajaxLoading > div {\n  position: absolute;\n  top: 0px;\n  bottom: 0px;\n  right: 0px;\n  left: 0px;\n  margin: auto;\n  height: 50px; }\n\n#ajaxLoading {\n  background-color: rgba(255, 255, 255, 0.8) !important;\n  display: none; }\n\n.spinner {\n  margin: 100px auto 0;\n  width: 70px;\n  text-align: center; }\n\n.spinner > div {\n  width: 18px;\n  height: 18px;\n  background-color: #333;\n  border-radius: 100%;\n  display: inline-block;\n  -webkit-animation: sk-bouncedelay 1.4s infinite ease-in-out both;\n  animation: sk-bouncedelay 1.4s infinite ease-in-out both; }\n\n.spinner .bounce1 {\n  -webkit-animation-delay: -0.32s;\n  animation-delay: -0.32s; }\n\n.spinner .bounce2 {\n  -webkit-animation-delay: -0.16s;\n  animation-delay: -0.16s; }\n\n@-webkit-keyframes sk-bouncedelay {\n  0%, 80%, 100% {\n    -webkit-transform: scale(0); }\n  40% {\n    -webkit-transform: scale(1); } }\n\n@keyframes sk-bouncedelay {\n  0%, 80%, 100% {\n    -webkit-transform: scale(0);\n    transform: scale(0); }\n  40% {\n    -webkit-transform: scale(1);\n    transform: scale(1); } }\n\n.englishText {\n  text-transform: lowercase !important;\n  direction: ltr; }\n\n.form-control {\n  border-color: #FD8F04 !important; }\n\n.pmd-textfield-focused {\n  background-color: #158B93 !important; }\n\n.validation-span {\n  display: none; }\n\n#wrapper, #wrapper #loginBoxCont {\n  width: 100%;\n  height: 100%;\n  position: absolute;\n  top: 0px;\n  left: 0px;\n  right: 0px;\n  bottom: 0px; }\n  #wrapper #loginBoxCont {\n    width: 400px;\n    height: 270px;\n    margin: auto;\n    padding: 10px; }\n    #wrapper #loginBoxCont #loginBox {\n      position: relative;\n      width: 100%;\n      height: 100%; }\n      #wrapper #loginBoxCont #loginBox h1 {\n        text-align: center;\n        font-family: homa;\n        color: #158B93; }\n      #wrapper #loginBoxCont #loginBox .loginArrow {\n        width: 140px;\n        height: 300px;\n        font-size: 200px;\n        position: absolute;\n        top: 0px;\n        line-height: 300px; }\n      #wrapper #loginBoxCont #loginBox .ltLoginArrow {\n        right: -140px; }\n      #wrapper #loginBoxCont #loginBox .rtLoginArrow {\n        left: -140px; }\n", ""]);
+exports.push([module.i, ".loadingBlur {\n  filter: blur(5px); }\n\n* {\n  font-family: isans; }\n\n/*loading spinner*/\n#mainLoading, #ajaxLoading {\n  width: 100%;\n  height: 100%;\n  z-index: 100;\n  position: fixed;\n  top: 0px;\n  bottom: 0px;\n  right: 0px;\n  left: 0px; }\n\n#mainLoading {\n  background-color: white; }\n\n#mainLoading > div, #ajaxLoading > div {\n  position: absolute;\n  top: 0px;\n  bottom: 0px;\n  right: 0px;\n  left: 0px;\n  margin: auto;\n  height: 50px; }\n\n#ajaxLoading {\n  background-color: rgba(255, 255, 255, 0.8) !important;\n  display: none; }\n\n.spinner {\n  margin: 100px auto 0;\n  width: 70px;\n  text-align: center; }\n\n.spinner > div {\n  width: 18px;\n  height: 18px;\n  background-color: #333;\n  border-radius: 100%;\n  display: inline-block;\n  -webkit-animation: sk-bouncedelay 1.4s infinite ease-in-out both;\n  animation: sk-bouncedelay 1.4s infinite ease-in-out both; }\n\n.spinner .bounce1 {\n  -webkit-animation-delay: -0.32s;\n  animation-delay: -0.32s; }\n\n.spinner .bounce2 {\n  -webkit-animation-delay: -0.16s;\n  animation-delay: -0.16s; }\n\n@-webkit-keyframes sk-bouncedelay {\n  0%, 80%, 100% {\n    -webkit-transform: scale(0); }\n  40% {\n    -webkit-transform: scale(1); } }\n\n@keyframes sk-bouncedelay {\n  0%, 80%, 100% {\n    -webkit-transform: scale(0);\n    transform: scale(0); }\n  40% {\n    -webkit-transform: scale(1);\n    transform: scale(1); } }\n\n.englishText {\n  text-transform: lowercase !important;\n  direction: ltr; }\n\n.form-control {\n  border-color: #FD8F04 !important; }\n\n.pmd-textfield-focused {\n  background-color: #158B93 !important; }\n\n.validation-span {\n  display: none; }\n\n#wrapper, #wrapper #loginBoxCont {\n  width: 100%;\n  height: 100%;\n  position: absolute;\n  top: 0px;\n  left: 0px;\n  right: 0px;\n  bottom: 0px;\n  background-color: #eee !important; }\n  #wrapper #loginBoxCont {\n    width: 400px;\n    height: 270px;\n    margin: auto;\n    padding: 10px; }\n    #wrapper #loginBoxCont #loginBox {\n      position: relative;\n      width: 100%;\n      height: 100%; }\n      #wrapper #loginBoxCont #loginBox h1 {\n        text-align: center;\n        font-family: homa;\n        color: #158B93; }\n      #wrapper #loginBoxCont #loginBox .loginArrow {\n        width: 140px;\n        height: 300px;\n        font-size: 200px;\n        position: absolute;\n        top: 0px;\n        line-height: 300px; }\n      #wrapper #loginBoxCont #loginBox .ltLoginArrow {\n        right: -140px; }\n      #wrapper #loginBoxCont #loginBox .rtLoginArrow {\n        left: -140px; }\n", ""]);
 
 // exports
 
 
 /***/ }),
-/* 11 */
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(12);
+var content = __webpack_require__(13);
+if(typeof content === 'string') content = [[module.i, content, '']];
+// Prepare cssTransformation
+var transform;
+
+var options = {"hmr":true}
+options.transform = transform
+// add the styles to the DOM
+var update = __webpack_require__(1)(content, options);
+if(content.locals) module.exports = content.locals;
+// Hot Module Replacement
+if(false) {
+	// When the styles change, update the <style> tags
+	if(!content.locals) {
+		module.hot.accept("!!../../../node_modules/css-loader/index.js!../../../node_modules/sass-loader/lib/loader.js?-url!./style.sass", function() {
+			var newContent = require("!!../../../node_modules/css-loader/index.js!../../../node_modules/sass-loader/lib/loader.js?-url!./style.sass");
+			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+			update(newContent);
+		});
+	}
+	// When the module is disposed, remove the <style> tags
+	module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 13 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(0)(undefined);
+// imports
+
+
+// module
+exports.push([module.i, ".loadingBlur {\n  filter: blur(5px); }\n\n* {\n  font-family: isans; }\n\n/*loading spinner*/\n#mainLoading, #ajaxLoading {\n  width: 100%;\n  height: 100%;\n  z-index: 100;\n  position: fixed;\n  top: 0px;\n  bottom: 0px;\n  right: 0px;\n  left: 0px; }\n\n#mainLoading {\n  background-color: white; }\n\n#mainLoading > div, #ajaxLoading > div {\n  position: absolute;\n  top: 0px;\n  bottom: 0px;\n  right: 0px;\n  left: 0px;\n  margin: auto;\n  height: 50px; }\n\n#ajaxLoading {\n  background-color: rgba(255, 255, 255, 0.8) !important;\n  display: none; }\n\n.spinner {\n  margin: 100px auto 0;\n  width: 70px;\n  text-align: center; }\n\n.spinner > div {\n  width: 18px;\n  height: 18px;\n  background-color: #333;\n  border-radius: 100%;\n  display: inline-block;\n  -webkit-animation: sk-bouncedelay 1.4s infinite ease-in-out both;\n  animation: sk-bouncedelay 1.4s infinite ease-in-out both; }\n\n.spinner .bounce1 {\n  -webkit-animation-delay: -0.32s;\n  animation-delay: -0.32s; }\n\n.spinner .bounce2 {\n  -webkit-animation-delay: -0.16s;\n  animation-delay: -0.16s; }\n\n@-webkit-keyframes sk-bouncedelay {\n  0%, 80%, 100% {\n    -webkit-transform: scale(0); }\n  40% {\n    -webkit-transform: scale(1); } }\n\n@keyframes sk-bouncedelay {\n  0%, 80%, 100% {\n    -webkit-transform: scale(0);\n    transform: scale(0); }\n  40% {\n    -webkit-transform: scale(1);\n    transform: scale(1); } }\n\n.englishText {\n  text-transform: lowercase !important;\n  direction: ltr; }\n\n.form-control {\n  border-color: #FD8F04 !important; }\n\n.pmd-textfield-focused {\n  background-color: #158B93 !important; }\n\n.validation-span {\n  display: none; }\n\n#wrapper {\n  width: 100%;\n  height: 100%;\n  display: table;\n  position: absolute;\n  top: 0px;\n  left: 0px;\n  right: 0px;\n  bottom: 0px;\n  background-color: #60646D; }\n\nheader#mainHeader {\n  width: 100%;\n  height: 70px;\n  background-color: #1C2021;\n  padding-right: 15px;\n  padding-left: 15px; }\n  header#mainHeader #rtHeader {\n    min-width: 300px;\n    height: 70px;\n    float: right;\n    display: table; }\n    header#mainHeader #rtHeader #userName {\n      min-width: 150px;\n      height: 70px;\n      padding-top: 5px;\n      padding-bottom: 5px;\n      text-align: center;\n      font-size: 26px;\n      float: right;\n      line-height: 60px;\n      color: white; }\n    header#mainHeader #rtHeader #userWarnings {\n      min-width: 90px;\n      height: 30px;\n      background-color: #60646D;\n      float: right;\n      border-radius: 10px;\n      line-height: 30px;\n      padding: 0px 5px 0px 5px;\n      margin: 20px 10px 0px 0px; }\n      header#mainHeader #rtHeader #userWarnings i {\n        width: 20px;\n        height: 30px;\n        line-height: 30px;\n        text-align: center;\n        float: right;\n        font-size: 20px;\n        margin-left: 5px; }\n      header#mainHeader #rtHeader #userWarnings span:nth-of-type(1) {\n        width: 10px;\n        height: 30px;\n        display: table;\n        font-weight: bold;\n        float: right;\n        padding: 0px 2px 0px 2px; }\n      header#mainHeader #rtHeader #userWarnings span:nth-of-type(2) {\n        height: 30px;\n        line-height: 30px;\n        float: right; }\n  header#mainHeader #middleHeader {\n    width: 70px;\n    height: 70px;\n    margin: auto;\n    display: block;\n    padding: 5px 0px 5px 0px; }\n    header#mainHeader #middleHeader img {\n      width: 100%;\n      height: 100%; }\n  header#mainHeader #ltHeader {\n    width: 300px;\n    height: 70px;\n    float: left; }\n    header#mainHeader #ltHeader #timeCountCont {\n      width: 150px;\n      height: 35px;\n      border-radius: 20px;\n      margin-top: 17.5px;\n      line-height: 35px;\n      font-size: 20px;\n      padding: 0px 5px 0px 5px;\n      float: right;\n      background-color: #60646D; }\n      header#mainHeader #ltHeader #timeCountCont i {\n        width: 35px;\n        height: 35px;\n        line-height: 35px;\n        text-align: center;\n        color: white;\n        float: right;\n        border-left: 1px dashed white; }\n      header#mainHeader #ltHeader #timeCountCont span {\n        height: 35px;\n        width: calc(100% - 35px);\n        line-height: 35px;\n        display: block;\n        float: right;\n        color: white;\n        text-align: center;\n        font-size: 18px;\n        font-family: yekan; }\n    header#mainHeader #ltHeader #endQuizBtn {\n      margin: 17.5px 10px 0px 0px; }\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 14 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(15);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -2421,7 +2492,7 @@ if(false) {
 }
 
 /***/ }),
-/* 12 */
+/* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(0)(undefined);
@@ -2435,13 +2506,13 @@ exports.push([module.i, "@charset \"UTF-8\";\n\n/*!\n * animate.css -http://dane
 
 
 /***/ }),
-/* 13 */
+/* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(14);
+var content = __webpack_require__(17);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -2466,7 +2537,7 @@ if(false) {
 }
 
 /***/ }),
-/* 14 */
+/* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(0)(undefined);
@@ -2480,13 +2551,13 @@ exports.push([module.i, "/*!\n * Bootstrap v3.3.7 (http://getbootstrap.com)\n * 
 
 
 /***/ }),
-/* 15 */
+/* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(16);
+var content = __webpack_require__(19);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -2511,7 +2582,7 @@ if(false) {
 }
 
 /***/ }),
-/* 16 */
+/* 19 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(0)(undefined);
@@ -2525,13 +2596,13 @@ exports.push([module.i, "/******************************************************
 
 
 /***/ }),
-/* 17 */
+/* 20 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(18);
+var content = __webpack_require__(21);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -2556,7 +2627,7 @@ if(false) {
 }
 
 /***/ }),
-/* 18 */
+/* 21 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(0)(undefined);
@@ -2570,13 +2641,13 @@ exports.push([module.i, "/*!\n * Propeller v1.1.0 (http://propeller.in/)\n * Cop
 
 
 /***/ }),
-/* 19 */
+/* 22 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(20);
+var content = __webpack_require__(23);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -2601,7 +2672,7 @@ if(false) {
 }
 
 /***/ }),
-/* 20 */
+/* 23 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(0)(undefined);
@@ -2613,30 +2684,6 @@ exports.push([module.i, "/* fallback */\r\n@font-face {\r\n  font-family: 'Mater
 
 // exports
 
-
-/***/ }),
-/* 21 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-//hide loading on page finish loading
-$(window).on("load", function () {
-    $("#mainLoading").slideUp(500);
-});
-
-// ajax loading hide/show functions
-
-window.showLoading = function () {
-    $("#ajaxLoading").fadeIn(500);
-    $("#wrapper").addClass("loadingBlur");
-};
-
-window.hideLoading = function () {
-    $("#ajaxLoading").fadeOut(500);
-    $("#wrapper").removeClass("loadingBlur");
-};
 
 /***/ })
 /******/ ]);

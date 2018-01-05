@@ -12,6 +12,8 @@ import "../global/loadingFunctions.js"
 
 import "../../stylesheets/global/fonts.css";
 
+import "../../stylesheets/auth/style.sass";
+
 import "../../stylesheets/panel/style.sass";
 
 import "../../stylesheets/plugin/animate.min.css";
