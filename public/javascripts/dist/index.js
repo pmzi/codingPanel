@@ -8,6 +8,8 @@ import "../plugin/propeller.js";
 
 import "../global/loadingFunctions.js"
 
+import "../panel/panelStyles"
+
 //le'ts import the css for UI design
 
 import "../../stylesheets/global/fonts.css";

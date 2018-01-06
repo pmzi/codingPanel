@@ -11,10 +11,33 @@ block content
           span اخطار
       #ltHeader
         #timeCountCont.pmd-z-depth
-          i.material-icons event
+          i.material-icons alarm
           span 13:00:00
         button#endQuizBtn.btn.pmd-btn-raised.pmd-ripple-effect.btn-danger اتمام آزمون
       #middleHeader
         img(src="./images/ikiu_logo.png")
+    aside#rtSideBar.col-lg-2.col-md-3.col-sm-3.pmd-z-depth
+      header
+        div
+          i= '<?'
+          span لیست سوالات
+          i= '_>'
+      ul
+        li.notMarked.notSolverd
+          i 1
+          ul
+            li حل نشده
+            li علامت گذاری نشده
+          i.proBar
+    #mainContent.col-lg-10
+
+    footer#mainFooter
+      #onlineStatus
+        i.pmd-z-depth
+        span اتصال برقرار است;)
+      #programmer
+        = 'Coded With Love By '
+        a(href="http://pmzi.ir",target="_blank").pmd-btn-flat.pmd-ripple-effect.btn-link='Pouya:)'
+
 
       
