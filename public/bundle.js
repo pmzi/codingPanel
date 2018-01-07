@@ -202,7 +202,7 @@ var singleton = null;
 var	singletonCounter = 0;
 var	stylesInsertedAtTop = [];
 
-var	fixUrls = __webpack_require__(9);
+var	fixUrls = __webpack_require__(10);
 
 module.exports = function(list, options) {
 	if (typeof DEBUG !== "undefined" && DEBUG) {
@@ -532,23 +532,23 @@ __webpack_require__(5);
 
 __webpack_require__(6);
 
-__webpack_require__(24);
-
 __webpack_require__(7);
 
-__webpack_require__(10);
+__webpack_require__(8);
 
-__webpack_require__(12);
+__webpack_require__(11);
 
-__webpack_require__(14);
+__webpack_require__(13);
 
-__webpack_require__(16);
+__webpack_require__(15);
 
-__webpack_require__(18);
+__webpack_require__(17);
 
-__webpack_require__(20);
+__webpack_require__(19);
 
-__webpack_require__(22);
+__webpack_require__(21);
+
+__webpack_require__(23);
 
 /***/ }),
 /* 3 */
@@ -2236,10 +2236,61 @@ window.hideLoading = function () {
 /* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
+"use strict";
+
+
+$(window).on("load", function () {
+    //for question`s bottom proBar
+    $("#rtSideBar>ul>li").mouseenter(function () {
+        $(this).find(".proBar").css({
+            "width": "100%"
+        });
+    });
+
+    $("#rtSideBar>ul>li").mouseleave(function () {
+        $(this).find(".proBar").css({
+            "width": "0px"
+        });
+    });
+
+    //for tabs progress bar
+    $(".tab").mouseenter(function () {
+
+        $(this).find(".tabProgress").css({
+            "width": "100%"
+        });
+    });
+    $(".tab").mouseleave(function () {
+
+        $(this).find(".tabProgress").css({
+            "width": "0px"
+        });
+    });
+
+    //sliding click of the tabs
+
+    $(".tab").click(function () {
+        $("#slidesCont").css({ "transform": "translateX(" + $(this).index() * $(".slide").width() + "px)" });
+    });
+});
+
+//sliding of the main;)
+
+$(window).on("load resize", function () {
+
+    $(".slide,#slideCont").width($("#mainContent").width() - 30 + 'px');
+
+    $("#slidesCont").width($(".slide").length * $(".slide").width() + 'px');
+});
+
+/***/ }),
+/* 8 */
+/***/ (function(module, exports, __webpack_require__) {
+
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(8);
+var content = __webpack_require__(9);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -2264,7 +2315,7 @@ if(false) {
 }
 
 /***/ }),
-/* 8 */
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(0)(undefined);
@@ -2278,7 +2329,7 @@ exports.push([module.i, "@font-face{\r\n    src: url('../../fonts/B Homa_0.ttf')
 
 
 /***/ }),
-/* 9 */
+/* 10 */
 /***/ (function(module, exports) {
 
 
@@ -2373,13 +2424,13 @@ module.exports = function (css) {
 
 
 /***/ }),
-/* 10 */
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(11);
+var content = __webpack_require__(12);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -2404,7 +2455,7 @@ if(false) {
 }
 
 /***/ }),
-/* 11 */
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(0)(undefined);
@@ -2418,13 +2469,13 @@ exports.push([module.i, ".loadingBlur {\n  filter: blur(5px); }\n\n* {\n  font-f
 
 
 /***/ }),
-/* 12 */
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(13);
+var content = __webpack_require__(14);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -2449,7 +2500,7 @@ if(false) {
 }
 
 /***/ }),
-/* 13 */
+/* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(0)(undefined);
@@ -2457,19 +2508,19 @@ exports = module.exports = __webpack_require__(0)(undefined);
 
 
 // module
-exports.push([module.i, ".loadingBlur {\n  filter: blur(5px); }\n\n* {\n  font-family: isans; }\n\n/*loading spinner*/\n#mainLoading, #ajaxLoading {\n  width: 100%;\n  height: 100%;\n  z-index: 100;\n  position: fixed;\n  top: 0px;\n  bottom: 0px;\n  right: 0px;\n  left: 0px; }\n\n#mainLoading {\n  background-color: white; }\n\n#mainLoading > div, #ajaxLoading > div {\n  position: absolute;\n  top: 0px;\n  bottom: 0px;\n  right: 0px;\n  left: 0px;\n  margin: auto;\n  height: 50px; }\n\n#ajaxLoading {\n  background-color: rgba(255, 255, 255, 0.8) !important;\n  display: none; }\n\n.spinner {\n  margin: 100px auto 0;\n  width: 70px;\n  text-align: center; }\n\n.spinner > div {\n  width: 18px;\n  height: 18px;\n  background-color: #333;\n  border-radius: 100%;\n  display: inline-block;\n  -webkit-animation: sk-bouncedelay 1.4s infinite ease-in-out both;\n  animation: sk-bouncedelay 1.4s infinite ease-in-out both; }\n\n.spinner .bounce1 {\n  -webkit-animation-delay: -0.32s;\n  animation-delay: -0.32s; }\n\n.spinner .bounce2 {\n  -webkit-animation-delay: -0.16s;\n  animation-delay: -0.16s; }\n\n@-webkit-keyframes sk-bouncedelay {\n  0%, 80%, 100% {\n    -webkit-transform: scale(0); }\n  40% {\n    -webkit-transform: scale(1); } }\n\n@keyframes sk-bouncedelay {\n  0%, 80%, 100% {\n    -webkit-transform: scale(0);\n    transform: scale(0); }\n  40% {\n    -webkit-transform: scale(1);\n    transform: scale(1); } }\n\n.englishText {\n  text-transform: lowercase !important;\n  direction: ltr; }\n\n.form-control {\n  border-color: #FD8F04 !important; }\n\n.pmd-textfield-focused {\n  background-color: #158B93 !important; }\n\n.validation-span {\n  display: none; }\n\n#wrapper {\n  width: 100%;\n  height: 100%;\n  display: table;\n  position: absolute;\n  top: 0px;\n  left: 0px;\n  right: 0px;\n  bottom: 0px;\n  background-color: #60646D; }\n\nheader#mainHeader {\n  width: 100%;\n  height: 70px;\n  background-color: #1C2021;\n  padding-right: 15px;\n  padding-left: 15px;\n  position: fixed;\n  top: 0px;\n  right: 0px;\n  left: 0px; }\n  header#mainHeader #rtHeader {\n    min-width: 300px;\n    height: 70px;\n    float: right;\n    display: table; }\n    header#mainHeader #rtHeader #userName {\n      min-width: 150px;\n      height: 70px;\n      padding-top: 5px;\n      padding-bottom: 5px;\n      text-align: center;\n      font-size: 26px;\n      float: right;\n      line-height: 60px;\n      color: white;\n      text-shadow: 2px 1px 10px #969696; }\n    header#mainHeader #rtHeader #userWarnings {\n      min-width: 90px;\n      height: 30px;\n      float: right;\n      border-bottom: 1px solid #CF000F;\n      line-height: 30px;\n      padding: 0px 5px 0px 5px;\n      margin: 20px 10px 0px 0px;\n      color: white; }\n      header#mainHeader #rtHeader #userWarnings i {\n        width: 20px;\n        height: 30px;\n        line-height: 30px;\n        text-align: center;\n        float: right;\n        font-size: 20px;\n        margin-left: 5px;\n        color: #CF000F; }\n      header#mainHeader #rtHeader #userWarnings span:nth-of-type(1) {\n        width: 10px;\n        height: 30px;\n        display: table;\n        font-weight: bold;\n        float: right;\n        padding: 0px 2px 0px 2px; }\n      header#mainHeader #rtHeader #userWarnings span:nth-of-type(2) {\n        height: 30px;\n        line-height: 30px;\n        float: right; }\n  header#mainHeader #middleHeader {\n    width: 70px;\n    height: 70px;\n    margin: auto;\n    display: block;\n    padding: 5px 0px 5px 0px; }\n    header#mainHeader #middleHeader img {\n      width: 100%;\n      height: 100%; }\n  header#mainHeader #ltHeader {\n    width: 300px;\n    height: 70px;\n    float: left; }\n    header#mainHeader #ltHeader #timeCountCont {\n      width: 150px;\n      height: 35px;\n      margin-top: 17.5px;\n      line-height: 35px;\n      font-size: 20px;\n      padding: 0px 5px 0px 5px;\n      float: right;\n      border-bottom: 1px solid #158B93; }\n      header#mainHeader #ltHeader #timeCountCont i {\n        width: 35px;\n        height: 35px;\n        line-height: 35px;\n        text-align: center;\n        color: white;\n        float: right; }\n      header#mainHeader #ltHeader #timeCountCont span {\n        height: 35px;\n        width: calc(100% - 35px);\n        line-height: 35px;\n        display: block;\n        float: right;\n        color: white;\n        text-align: center;\n        font-size: 18px;\n        font-family: yekan; }\n    header#mainHeader #ltHeader #endQuizBtn {\n      margin: 17.5px 10px 0px 0px; }\n\n#rtSideBar {\n  height: calc(100% - 80px);\n  position: fixed;\n  right: 0px;\n  top: 70px;\n  background-color: #1C2021;\n  padding: 0px; }\n  #rtSideBar header {\n    width: 100%;\n    height: 70px;\n    background-color: #158B93; }\n    #rtSideBar header div {\n      min-width: 200px;\n      display: table;\n      margin: auto; }\n      #rtSideBar header div i {\n        width: 40px;\n        height: 70px;\n        line-height: 70px;\n        text-align: center;\n        color: white;\n        font-size: 22px;\n        font-style: normal;\n        display: inline-block;\n        font-family: inconsolata;\n        float: right; }\n      #rtSideBar header div span {\n        width: 100px;\n        height: 70px;\n        line-height: 70px;\n        color: white;\n        font-family: homa;\n        display: inline-block;\n        float: right;\n        font-size: 20px; }\n  #rtSideBar > ul {\n    width: 100%;\n    height: 100%;\n    padding: 5px 10px 5px 10px;\n    margin: 0px; }\n    #rtSideBar > ul > li {\n      width: 100%;\n      height: 60px;\n      background-color: #60646D;\n      margin-bottom: 5px;\n      list-style-type: none;\n      cursor: pointer; }\n      #rtSideBar > ul > li > i {\n        background-color: #3c3f44;\n        width: 60px;\n        height: 60px;\n        line-height: 60px;\n        color: white;\n        display: inline-block;\n        font-style: normal;\n        font-family: homa;\n        font-size: 30px;\n        text-align: center; }\n      #rtSideBar > ul > li > ul {\n        width: calc(100% - 60px);\n        height: 60px;\n        margin: 0px;\n        padding: 0px;\n        float: left; }\n        #rtSideBar > ul > li > ul li {\n          width: 100%;\n          height: 30px;\n          text-align: center; }\n  #rtSideBar .proBar {\n    width: 0px;\n    transition-duration: 0.5s;\n    transform-origin: right;\n    background-color: #158B93;\n    height: 2px;\n    float: right; }\n\n#mainContent {\n  min-height: calc(100% - 90px);\n  background-color: #333b3d;\n  display: table;\n  float: left;\n  margin-top: 70px; }\n\n#mainFooter {\n  width: 100%;\n  height: 25px;\n  background-color: #050505;\n  position: fixed;\n  bottom: 0px;\n  right: 0px;\n  left: 0px;\n  padding: 0px 15px 0px 15px; }\n  #mainFooter #onlineStatus {\n    width: 200px;\n    display: inline-block;\n    height: 25px;\n    line-height: 25px;\n    color: white;\n    font-size: 12px; }\n    #mainFooter #onlineStatus i {\n      width: 10px;\n      height: 10px;\n      background-color: green;\n      float: right;\n      display: block;\n      border-radius: 50%;\n      margin: 7.5px 5px 7.5px 5px; }\n    #mainFooter #onlineStatus span {\n      height: 25px;\n      display: table;\n      line-height: 25px;\n      display: block;\n      font-size: 10px;\n      float: right; }\n  #mainFooter #programmer {\n    float: left;\n    display: inline-block;\n    height: 25px;\n    line-height: 25px;\n    color: white;\n    font-family: inconsolata;\n    direction: ltr;\n    font-size: 12px; }\n    #mainFooter #programmer a {\n      padding: 2px;\n      color: #158B93; }\n", ""]);
+exports.push([module.i, ".loadingBlur {\n  filter: blur(5px); }\n\n* {\n  font-family: isans; }\n\n/*loading spinner*/\n#mainLoading, #ajaxLoading {\n  width: 100%;\n  height: 100%;\n  z-index: 100;\n  position: fixed;\n  top: 0px;\n  bottom: 0px;\n  right: 0px;\n  left: 0px; }\n\n#mainLoading {\n  background-color: white; }\n\n#mainLoading > div, #ajaxLoading > div {\n  position: absolute;\n  top: 0px;\n  bottom: 0px;\n  right: 0px;\n  left: 0px;\n  margin: auto;\n  height: 50px; }\n\n#ajaxLoading {\n  background-color: rgba(255, 255, 255, 0.8) !important;\n  display: none; }\n\n.spinner {\n  margin: 100px auto 0;\n  width: 70px;\n  text-align: center; }\n\n.spinner > div {\n  width: 18px;\n  height: 18px;\n  background-color: #333;\n  border-radius: 100%;\n  display: inline-block;\n  -webkit-animation: sk-bouncedelay 1.4s infinite ease-in-out both;\n  animation: sk-bouncedelay 1.4s infinite ease-in-out both; }\n\n.spinner .bounce1 {\n  -webkit-animation-delay: -0.32s;\n  animation-delay: -0.32s; }\n\n.spinner .bounce2 {\n  -webkit-animation-delay: -0.16s;\n  animation-delay: -0.16s; }\n\n@-webkit-keyframes sk-bouncedelay {\n  0%, 80%, 100% {\n    -webkit-transform: scale(0); }\n  40% {\n    -webkit-transform: scale(1); } }\n\n@keyframes sk-bouncedelay {\n  0%, 80%, 100% {\n    -webkit-transform: scale(0);\n    transform: scale(0); }\n  40% {\n    -webkit-transform: scale(1);\n    transform: scale(1); } }\n\n.englishText {\n  text-transform: lowercase !important;\n  direction: ltr; }\n\n.form-control {\n  border-color: #FD8F04 !important; }\n\n.pmd-textfield-focused {\n  background-color: #158B93 !important; }\n\n.validation-span {\n  display: none; }\n\n#wrapper {\n  width: 100%;\n  height: 100%;\n  display: table;\n  position: absolute;\n  top: 0px;\n  left: 0px;\n  right: 0px;\n  bottom: 0px;\n  background-color: #60646D; }\n\nheader#mainHeader {\n  z-index: 10;\n  width: 100%;\n  height: 70px;\n  background-color: #1C2021;\n  padding-right: 15px;\n  padding-left: 15px;\n  position: fixed;\n  top: 0px;\n  right: 0px;\n  left: 0px; }\n  header#mainHeader #rtHeader {\n    min-width: 300px;\n    height: 70px;\n    float: right;\n    display: table; }\n    header#mainHeader #rtHeader #userName {\n      min-width: 150px;\n      height: 70px;\n      padding-top: 5px;\n      padding-bottom: 5px;\n      text-align: center;\n      font-size: 26px;\n      float: right;\n      line-height: 60px;\n      color: white;\n      text-shadow: 2px 1px 10px #969696; }\n    header#mainHeader #rtHeader #userWarnings {\n      min-width: 90px;\n      height: 30px;\n      float: right;\n      border-bottom: 1px solid #CF000F;\n      line-height: 30px;\n      padding: 0px 5px 0px 5px;\n      margin: 20px 10px 0px 0px;\n      color: white; }\n      header#mainHeader #rtHeader #userWarnings i {\n        width: 20px;\n        height: 30px;\n        line-height: 30px;\n        text-align: center;\n        float: right;\n        font-size: 20px;\n        margin-left: 5px;\n        color: #CF000F; }\n      header#mainHeader #rtHeader #userWarnings span:nth-of-type(1) {\n        width: 10px;\n        height: 30px;\n        display: table;\n        font-weight: bold;\n        float: right;\n        padding: 0px 2px 0px 2px; }\n      header#mainHeader #rtHeader #userWarnings span:nth-of-type(2) {\n        height: 30px;\n        line-height: 30px;\n        float: right; }\n  header#mainHeader #middleHeader {\n    width: 70px;\n    height: 70px;\n    margin: auto;\n    display: block;\n    padding: 5px 0px 5px 0px; }\n    header#mainHeader #middleHeader img {\n      width: 100%;\n      height: 100%; }\n  header#mainHeader #ltHeader {\n    width: 300px;\n    height: 70px;\n    float: left; }\n    header#mainHeader #ltHeader #timeCountCont {\n      width: 150px;\n      height: 35px;\n      margin-top: 17.5px;\n      line-height: 35px;\n      font-size: 20px;\n      padding: 0px 5px 0px 5px;\n      float: right;\n      border-bottom: 1px solid #158B93; }\n      header#mainHeader #ltHeader #timeCountCont i {\n        width: 35px;\n        height: 35px;\n        line-height: 35px;\n        text-align: center;\n        color: white;\n        float: right; }\n      header#mainHeader #ltHeader #timeCountCont span {\n        height: 35px;\n        width: calc(100% - 35px);\n        line-height: 35px;\n        display: block;\n        float: right;\n        color: white;\n        text-align: center;\n        font-size: 18px;\n        font-family: yekan; }\n    header#mainHeader #ltHeader #endQuizBtn {\n      margin: 17.5px 10px 0px 0px; }\n\n#rtSideBar {\n  z-index: 100;\n  height: calc(100% - 95px);\n  position: fixed;\n  right: 0px;\n  top: 70px;\n  background-color: #1C2021;\n  padding: 0px; }\n  #rtSideBar header {\n    width: 100%;\n    height: 70px;\n    background-color: #158B93; }\n    #rtSideBar header div {\n      min-width: 200px;\n      display: table;\n      margin: auto; }\n      #rtSideBar header div i {\n        width: 40px;\n        height: 70px;\n        line-height: 70px;\n        text-align: center;\n        color: white;\n        font-size: 22px;\n        font-style: normal;\n        display: inline-block;\n        font-family: inconsolata;\n        float: right; }\n      #rtSideBar header div span {\n        width: 100px;\n        height: 70px;\n        line-height: 70px;\n        color: white;\n        font-family: homa;\n        display: inline-block;\n        float: right;\n        font-size: 20px; }\n  #rtSideBar > ul {\n    width: 100%;\n    height: 100%;\n    padding: 5px 10px 5px 10px;\n    margin: 0px; }\n    #rtSideBar > ul > li {\n      width: 100%;\n      height: 60px;\n      background-color: #60646D;\n      margin-bottom: 5px;\n      list-style-type: none;\n      cursor: pointer; }\n      #rtSideBar > ul > li > i {\n        background-color: #3c3f44;\n        width: 60px;\n        height: 60px;\n        line-height: 60px;\n        color: white;\n        display: inline-block;\n        font-style: normal;\n        font-family: homa;\n        font-size: 30px;\n        text-align: center; }\n      #rtSideBar > ul > li > ul {\n        width: calc(100% - 60px);\n        height: 60px;\n        margin: 0px;\n        padding: 0px;\n        float: left; }\n        #rtSideBar > ul > li > ul li {\n          width: 100%;\n          height: 30px;\n          text-align: center; }\n  #rtSideBar .proBar {\n    width: 0px;\n    transition-duration: 0.5s;\n    transform-origin: right;\n    background-color: #158B93;\n    height: 2px;\n    float: right; }\n\n#mainContent {\n  min-height: calc(100% - 90px);\n  background-color: #333b3d;\n  display: table;\n  float: left;\n  margin-top: 70px; }\n  #mainContent header#tabs {\n    width: 100%;\n    height: 80px;\n    padding-top: 5px; }\n    #mainContent header#tabs .tab.activeTab .tabProgress {\n      width: 100% !important; }\n    #mainContent header#tabs .tab.activeTab .tabText {\n      background-color: #1C2021 !important; }\n    #mainContent header#tabs .tab {\n      height: 100%;\n      float: right;\n      cursor: pointer; }\n      #mainContent header#tabs .tab .tabText {\n        width: 100%;\n        background-color: #282d2f;\n        height: calc(100% - 3px);\n        line-height: 70px;\n        color: white;\n        text-align: center;\n        border-top-right-radius: 5px;\n        border-top-left-radius: 5px;\n        font-family: homa;\n        font-size: 20px; }\n      #mainContent header#tabs .tab .tabProgressCont {\n        width: 100%;\n        height: 3px;\n        background-color: #333b3d; }\n        #mainContent header#tabs .tab .tabProgressCont .tabProgress {\n          width: 0px;\n          height: 3px;\n          transform-origin: center;\n          transition-duration: 0.3s;\n          margin: auto;\n          background-color: #158B93; }\n  #mainContent #slideCont {\n    height: 100%;\n    overflow: hidden;\n    margin-right: 15px; }\n    #mainContent #slideCont #slidesCont {\n      display: table;\n      transition-duration: 0.5s;\n      transition-timing-function: ease-out; }\n      #mainContent #slideCont #slidesCont .slide {\n        min-height: 400px;\n        display: table;\n        float: right;\n        background-color: #1C2021; }\n\n#mainFooter {\n  width: 100%;\n  height: 25px;\n  background-color: #050505;\n  position: fixed;\n  bottom: 0px;\n  right: 0px;\n  left: 0px;\n  padding: 0px 15px 0px 15px; }\n  #mainFooter #onlineStatus {\n    width: 200px;\n    display: inline-block;\n    height: 25px;\n    line-height: 25px;\n    color: white;\n    font-size: 12px; }\n    #mainFooter #onlineStatus i {\n      width: 10px;\n      height: 10px;\n      background-color: green;\n      float: right;\n      display: block;\n      border-radius: 50%;\n      margin: 7.5px 5px 7.5px 5px; }\n    #mainFooter #onlineStatus span {\n      height: 25px;\n      display: table;\n      line-height: 25px;\n      display: block;\n      font-size: 10px;\n      float: right; }\n  #mainFooter #programmer {\n    float: left;\n    display: inline-block;\n    height: 25px;\n    line-height: 25px;\n    color: white;\n    font-family: inconsolata;\n    direction: ltr;\n    font-size: 12px; }\n    #mainFooter #programmer a {\n      padding: 2px;\n      color: #158B93; }\n", ""]);
 
 // exports
 
 
 /***/ }),
-/* 14 */
+/* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(15);
+var content = __webpack_require__(16);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -2494,7 +2545,7 @@ if(false) {
 }
 
 /***/ }),
-/* 15 */
+/* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(0)(undefined);
@@ -2508,13 +2559,13 @@ exports.push([module.i, "@charset \"UTF-8\";\n\n/*!\n * animate.css -http://dane
 
 
 /***/ }),
-/* 16 */
+/* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(17);
+var content = __webpack_require__(18);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -2539,7 +2590,7 @@ if(false) {
 }
 
 /***/ }),
-/* 17 */
+/* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(0)(undefined);
@@ -2553,13 +2604,13 @@ exports.push([module.i, "/*!\n * Bootstrap v3.3.7 (http://getbootstrap.com)\n * 
 
 
 /***/ }),
-/* 18 */
+/* 19 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(19);
+var content = __webpack_require__(20);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -2584,7 +2635,7 @@ if(false) {
 }
 
 /***/ }),
-/* 19 */
+/* 20 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(0)(undefined);
@@ -2598,13 +2649,13 @@ exports.push([module.i, "/******************************************************
 
 
 /***/ }),
-/* 20 */
+/* 21 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(21);
+var content = __webpack_require__(22);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -2629,7 +2680,7 @@ if(false) {
 }
 
 /***/ }),
-/* 21 */
+/* 22 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(0)(undefined);
@@ -2643,13 +2694,13 @@ exports.push([module.i, "/*!\n * Propeller v1.1.0 (http://propeller.in/)\n * Cop
 
 
 /***/ }),
-/* 22 */
+/* 23 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(23);
+var content = __webpack_require__(24);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -2674,7 +2725,7 @@ if(false) {
 }
 
 /***/ }),
-/* 23 */
+/* 24 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(0)(undefined);
@@ -2686,24 +2737,6 @@ exports.push([module.i, "/* fallback */\r\n@font-face {\r\n  font-family: 'Mater
 
 // exports
 
-
-/***/ }),
-/* 24 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-$(window).on("load", function () {
-    //for question`s bottom proBar
-    $("#rtSideBar>ul>li").mouseenter(function () {
-        $(this).find(".proBar").css({ "width": "100%" });
-    });
-
-    $("#rtSideBar>ul>li").mouseleave(function () {
-        $(this).find(".proBar").css({ "width": "0px" });
-    });
-});
 
 /***/ })
 /******/ ]);

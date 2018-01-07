@@ -29,8 +29,29 @@ block content
             li حل نشده
             li علامت گذاری نشده
           i.proBar
-    #mainContent.col-lg-10
-
+    main#mainContent.col-lg-10.col-md-9.col-sm-9
+      header#tabs
+        .tab.col-lg-3.activeTab
+          .tabText.pmd-ripple-effect سوال
+          .tabProgressCont
+            .tabProgress
+        .tab.col-lg-3
+          .tabText.pmd-ripple-effect محیط کدنویسی
+          .tabProgressCont
+            .tabProgress
+        .tab.col-lg-3 
+          .tabText.pmd-ripple-effect گزارش
+          .tabProgressCont
+            .tabProgress
+        .tab.col-lg-3
+          .tabText.pmd-ripple-effect='بران;)'
+          .tabProgressCont
+            .tabProgress
+      #slideCont
+        #slidesCont
+          #challengeCont.slide
+          #codingCont.slide
+          #report.slide
     footer#mainFooter
       #onlineStatus
         i.pmd-z-depth
