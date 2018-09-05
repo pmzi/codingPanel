@@ -5,6 +5,7 @@
   "description": "My Electron application description",
   "main": "src/js/app.js",
   "scripts": {
+    "sass:compile": "node-sass src/css/main.scss src/css/main.css -w",
     "start": "electron-forge start",
     "package": "electron-forge package",
     "make": "electron-forge make",
@@ -60,6 +61,7 @@
     "eslint-config-airbnb": "^15.1.0",
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-jsx-a11y": "^5.1.1",
-    "eslint-plugin-react": "^7.11.1"
+    "eslint-plugin-react": "^7.11.1",
+    "node-sass": "^4.9.3"
   }
 }
