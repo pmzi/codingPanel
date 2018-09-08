@@ -6,7 +6,7 @@
   "main": "src/js/app.js",
   "scripts": {
     "bundle:watch": "webpack --watch",
-    "sass:compile": "node-sass src/css/main.scss src/css/main.css -w",
+    "sass:compile": "node-sass src/scss/main.scss src/scss/main.css -w",
     "start": "electron-forge start",
     "package": "electron-forge package",
     "make": "electron-forge make",
