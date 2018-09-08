@@ -58,3 +58,5 @@ typings/
 .env
 
 src/js/dist
+
+src/scss/main.css
