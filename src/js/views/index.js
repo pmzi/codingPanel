@@ -3,4 +3,4 @@ const ReactDom = require('react-dom');
 
 const IndexPage = require('./pages/IndexPage');
 
-ReactDom.render(<IndexPage />, document.querySelector("#app"));
+ReactDom.render(<IndexPage />, document.querySelector("#wrapper"));
