@@ -1,3 +1,22 @@
 // -----------------------------------------------------------------------------
 // This file contains all styles related to the button component.
 // -----------------------------------------------------------------------------
+
+.button{
+    background-color: $primary-color;
+    border: 0;
+    outline: none;
+    cursor: pointer;
+    padding: 0.8rem 1rem;
+    color: white;
+    min-width: 16rem;
+    transition-duration: 0.3s;
+    box-shadow: box-shadow-x1(rgba(255,255,255,0.2));
+    &:hover{
+        transition-duration: 0.3s;
+        box-shadow: box-shadow-x2(rgba(41,128,185,0.8));
+    }
+    &:active{
+        transform: scale(0.98);
+    }
+}
