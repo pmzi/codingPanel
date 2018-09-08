@@ -1,9 +1,13 @@
 const React = require('react');
+const LoginSection = require('./components/LoginSection');
 
 class IndexPage extends React.Component{
 
     render(){
-        return (<div id="wrapper"></div>);
+        return (<React.Fragment>
+            <LoginSection />
+        </React.Fragment>
+            );
     }
 
 }
