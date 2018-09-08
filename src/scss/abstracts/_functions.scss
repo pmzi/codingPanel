@@ -28,3 +28,15 @@
 @function font($path, $base: $base-url) {
   @return asset($base, 'fonts/', $path);
 }
+
+@function box-shadow-x1($color){
+  @return 0 0 1rem 0 $color;
+}
+
+@function box-shadow-x2($color){
+  @return 0 0 1.5rem 0 $color;
+}
+
+@function box-shadow-x3($color){
+  @return 0 0 2rem 0 $color;
+}
