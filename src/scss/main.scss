@@ -19,11 +19,12 @@
 
 // 4. Layout-related sections
 @import
-  'layout/header',
-  'layout/footer';
+  'layout/wrapper';
 
 // 5. Components
 @import
+  'components/input',
+  'components/loginSection',
   'components/button';
 
 // 6. Page-specific styles
