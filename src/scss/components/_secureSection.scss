@@ -6,9 +6,17 @@
     left: 0;
     background-color: $back-color;
 
-    display: flex;
+    transition-duration: 0.3s;
+
+    display: flex;  
     justify-content: center;
     align-items: center;
+
+    &.secureSection--hidden{
+        transform: scale(10);
+        opacity: 0;
+        transition-duration: 0.3s;
+    }
 
     &__box{
         width: 35rem;

@@ -21,8 +21,7 @@ class SecureArea extends React.Component{
         this.state = {
             status: 0,
             class: statusClass,
-            text: statusText,
-            show: false
+            text: statusText
         }
         
     }
@@ -51,7 +50,7 @@ class SecureArea extends React.Component{
 
     render(){
         return  (
-            <div className={`secureArea ${this.state.class} ${this.state.show ? '' : 'secureArea--hidden'}`}>
+            <div className={`secureArea ${this.state.class}`}>
                 <div className='secureArea__text'>
                     {this.state.text}
                 </div>
