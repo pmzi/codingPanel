@@ -22,7 +22,7 @@ class SecureArea extends React.Component{
             status: 0,
             class: statusClass,
             text: statusText,
-            show: true
+            show: false
         }
         
     }
