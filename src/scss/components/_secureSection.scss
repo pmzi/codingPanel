@@ -1,0 +1,18 @@
+.secureSection{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: $back-color;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &__box{
+        width: 35rem;
+        height: 35rem;
+    }
+
+}
