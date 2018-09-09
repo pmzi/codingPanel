@@ -1,0 +1,145 @@
+.secureArea{
+    width: 100%;
+    height: 100%;
+
+    transition-duration: 0.3s;
+
+    position: relative;
+
+    &.secureArea--hidden{
+        transform: scale(10);
+        opacity: 0;
+        transition-duration: 0.3s;
+    }
+
+    &__text{
+        position: absolute;
+        width: 50%;
+        height: 50%;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+        border-radius: 50%;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;        
+
+        animation-iteration-count: infinite;
+        animation-direction: alternate;
+        animation-duration: 0.8s;
+
+    }
+
+    &.secureArea--notSecure{
+        .secureArea__text{
+            box-shadow: 0 0 1rem 0 #c0392b;
+            background-color: #c0392b;
+        }
+        .secureArea__wave{
+            border: 1px solid #c0392b;
+        }
+    }
+    &.secureArea--beingSecured{
+        .secureArea__text{
+            box-shadow: 0 0 1rem 0 #f39c12;
+            background-color: #f39c12;
+            animation-name: securingAnimation;
+        }
+        .secureArea__wave{
+            border: 1px solid #f39c12;
+        }
+    }
+    &.secureArea--secured{
+        .secureArea__text{
+            box-shadow: 0 0 1rem 0 #27ae60;
+            background-color: #27ae60;
+        }
+        .secureArea__wave{
+            border: 1px solid #27ae60;
+        }
+    }
+
+    &__wave{
+        width: 50%;
+        height: 50%;
+        border-radius: 50%;
+
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+
+        opacity: 0;
+
+        animation-direction: alternate;
+        animation-duration: 0.8s;
+        animation-iteration-count: infinite;
+
+    }
+
+    &--beingSecured{
+        :nth-child(2){
+            animation-name: securingWaveAnimation_1;
+            animation-delay: 0.2s;
+        }
+    
+        :nth-child(3){
+            animation-name: securingWaveAnimation_2;
+            animation-delay: 0.1s;
+        }
+    
+        :nth-child(4){
+            animation-name: securingWaveAnimation_3;
+        }
+    }
+
+    
+
+}
+
+@keyframes securingAnimation{
+    0%{
+        transform: scale(1);
+    }
+    100%{
+        transform: scale(0.90);
+    }
+}
+
+@keyframes securingWaveAnimation_1{
+    0%{
+        transform: scale(1.8);
+        opacity: 1;
+    }
+    100%{
+        transform: scale(1);
+        opacity: 0;
+    }
+}
+
+@keyframes securingWaveAnimation_2{
+    0%{
+        transform: scale(1.6);
+        opacity: 1;
+    }
+    100%{
+        transform: scale(1);
+        opacity: 0;
+    }
+}
+
+@keyframes securingWaveAnimation_3{
+    0%{
+        transform: scale(1.4);
+        opacity: 1;
+    }
+    100%{
+        transform: scale(1);
+        opacity: 0;
+    }
+}
